@@ -1,7 +1,7 @@
 # javascript-tips
 Summary of best practices, tips and tricks related to JavaScript.
 
-# Source: Eloquent JavaScript (Book)
+# Eloquent JavaScript (Book)
 - Author: Marijn Haverbeke
 - Site: https://eloquentjavascript.net/
 
