@@ -35,3 +35,37 @@ for (;;) {
   }
 }
 ```
+
+# javascript.info (website)
+- Site: https://javascript.info/
+
+
+## Asynchronous coding
+There’s a special syntax to work with promises in a more comfort fashion, called *async/await*. 
+
+The word `async` before a function means one simple thing: a function always returns a promise. If the code has return `<non-promise>` in it, then JavaScript automatically wraps it into a resolved promise with that value.
+
+Example:
+````
+async function f() {
+  return 1;
+}
+
+f().then(alert); // 1
+````
+The keyword `await` makes JavaScript wait until that promise settles and returns its result. **It can only be used inside an `async` function**.
+````
+async function f() {
+
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("done!"), 1000)
+  });
+
+  let result = await promise; // wait till the promise resolves (*)
+
+  alert(result); // "done!"
+}
+
+f();
+````
+The function execution “pauses” at the line (*) and resumes when the promise settles, with result becoming its result. So the code above shows “done!” in one second.
