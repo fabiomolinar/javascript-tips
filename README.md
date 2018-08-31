@@ -7,7 +7,7 @@ Summary of best practices, tips and tricks related to JavaScript.
 
 ## Error handling
 Problems that are expected to happen during routine use, crashing with an unhandled exception is a terrible strategy. As a general rule, don’t blanket-catch exceptions unless it is for the purpose of “routing” them somewhere. Instead of doing this:
-```
+```javascript
   for (;;) {
     try {
       let dir = promtDirection("Where?"); // ← typo!
@@ -19,7 +19,7 @@ Problems that are expected to happen during routine use, crashing with an unhand
   }
 ```
 The best way to do it is to create specific error classes so that we can detect and handle them accordingly. Like this:
-```
+```javascript
 class InputError extends Error {}
 for (;;) {
   try {
@@ -46,15 +46,15 @@ There’s a special syntax to work with promises in a more comfort fashion, call
 The word `async` before a function means one simple thing: a function always returns a promise. If the code has return `<non-promise>` in it, then JavaScript automatically wraps it into a resolved promise with that value.
 
 Example:
-````
+```javascript
 async function f() {
   return 1;
 }
 
 f().then(alert); // 1
-````
+```
 The keyword `await` makes JavaScript wait until that promise settles and returns its result. **It can only be used inside an `async` function**.
-````
+```javascript
 async function f() {
 
   let promise = new Promise((resolve, reject) => {
@@ -67,5 +67,5 @@ async function f() {
 }
 
 f();
-````
+```
 The function execution “pauses” at the line (*) and resumes when the promise settles, with result becoming its result. So the code above shows “done!” in one second.
